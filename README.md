@@ -12,3 +12,7 @@ textClassifierRNN has implemented bidirectional LSTM and one level attentional R
 
 ## update on 6/22/2017 ##
 To derive the attention weight which can be useful to identify important words for the classification. Please see my latest update on the post. All you need to do is run a forward pass right before attention layer output. The result is not very promising. I will update the post once I have further result. 
+
+## update on 4/8/2018 ##
+Script have been updated to pyhton3.
+References to obsoletes references from 3rd party libraries have been updated to recent versions.
