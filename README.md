@@ -1,7 +1,5 @@
 @todo: Refactor script into OOP application with new/train as now and save/load/test of models.
 
-This is a fork of https://github.com/richliao/textClassifier to adapt the script to python3 and updating obsolethe methods, attributes and properties from other libraries.
-
 # textClassifier
 
 textClassifierHATT.py has the implementation of [Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf). Please see the [my blog](https://richliao.github.io/supervised/classification/2016/12/26/textclassifier-HATN/) for full detail. Also see [Keras Google group discussion](https://groups.google.com/forum/#!topic/keras-users/IWK9opMFavQ)
@@ -15,4 +13,4 @@ To derive the attention weight which can be useful to identify important words f
 
 ## update on 4/8/2018 ##
 Script have been updated to pyhton3.
-Obsoletes references to 3rd party libraries have been updated to recent versions.
+Obsolete references to 3rd party libraries have been updated to recent versions.
