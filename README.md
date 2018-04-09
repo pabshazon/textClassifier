@@ -1,3 +1,6 @@
+This is a fork of https://github.com/richliao/textClassifier to adapt the script to python3 and updating obsolethe methods and properties from other libraries.
+@todo: Refactor script into OOP application with new/train as now and save/load/test of models.
+
 # textClassifier
 
 textClassifierHATT.py has the implementation of [Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf). Please see the [my blog](https://richliao.github.io/supervised/classification/2016/12/26/textclassifier-HATN/) for full detail. Also see [Keras Google group discussion](https://groups.google.com/forum/#!topic/keras-users/IWK9opMFavQ)
