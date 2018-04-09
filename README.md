@@ -1,6 +1,6 @@
 @todo: Refactor script into OOP application with new/train as now and save/load/test of models.
 
-This is a fork of https://github.com/richliao/textClassifier to adapt the script to python3 and updating obsolethe methods and properties from other libraries.
+This is a fork of https://github.com/richliao/textClassifier to adapt the script to python3 and updating obsolethe methods, attributes and properties from other libraries.
 
 # textClassifier
 
