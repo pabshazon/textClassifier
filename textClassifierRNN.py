@@ -2,7 +2,7 @@
 # Dec 26 2016
 import numpy as np
 import pandas as pd
-import cPickle
+import _pickle as cPickle
 from collections import defaultdict
 import re
 
@@ -24,7 +24,7 @@ from keras.models import Model
 
 from keras import backend as K
 from keras.engine.topology import Layer, InputSpec
-from keras import initializations
+from keras import initializers
 
 MAX_SEQUENCE_LENGTH = 1000
 MAX_NB_WORDS = 20000
@@ -36,22 +36,22 @@ def clean_str(string):
     Tokenization/string cleaning for dataset
     Every dataset is lower cased except
     """
-    string = re.sub(r"\\", "", string)    
-    string = re.sub(r"\'", "", string)    
-    string = re.sub(r"\"", "", string)    
+    string = re.sub(r"\\", "", string)
+    string = re.sub(r"\'", "", string)
+    string = re.sub(r"\"", "", string)
     return string.strip().lower()
 
-data_train = pd.read_csv('~/Testground/data/imdb/labeledTrainData.tsv', sep='\t')
-print data_train.shape
+data_train = pd.read_csv('~/devLab/dataset/labeledTrainData.tsv', sep='\t')
+print(data_train.shape)
 
 texts = []
 labels = []
 
 for idx in range(data_train.review.shape[0]):
-    text = BeautifulSoup(data_train.review[idx])
-    texts.append(clean_str(text.get_text().encode('ascii','ignore')))
+    text = BeautifulSoup(data_train.review[idx], "lxml")
+    texts.append(clean_str(text.get_text().encode('ascii','ignore').decode('utf-8')))
     labels.append(data_train.sentiment[idx])
-    
+
 
 tokenizer = Tokenizer(nb_words=MAX_NB_WORDS)
 tokenizer.fit_on_texts(texts)
@@ -78,12 +78,11 @@ x_val = data[-nb_validation_samples:]
 y_val = labels[-nb_validation_samples:]
 
 print('Traing and validation set number of positive and negative reviews')
-print y_train.sum(axis=0)
-print y_val.sum(axis=0)
+print(y_train.sum(axis=0))
+print(y_val.sum(axis=0))
 
-GLOVE_DIR = "~/Testground/data/glove"
 embeddings_index = {}
-f = open(os.path.join(GLOVE_DIR, 'glove.6B.100d.txt'))
+f = open("/home/pablo/devLab/dataset/glove.6B.100d.txt")
 for line in f:
     values = line.split()
     word = values[0]
@@ -118,12 +117,12 @@ model.compile(loss='categorical_crossentropy',
 print("model fitting - Bidirectional LSTM")
 model.summary()
 model.fit(x_train, y_train, validation_data=(x_val, y_val),
-          nb_epoch=10, batch_size=50)
+          epochs=10, batch_size=50)
 
 # Attention GRU network		  
 class AttLayer(Layer):
     def __init__(self, **kwargs):
-        self.init = initializations.get('normal')
+        self.init = initializers.get('normal')
         #self.input_spec = [InputSpec(ndim=3)]
         super(AttLayer, self).__init__(**kwargs)
 
