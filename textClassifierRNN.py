@@ -174,4 +174,4 @@ model.compile(loss='categorical_crossentropy',
 print("model fitting - attention GRU network")
 model.summary()
 model.fit(x_train, y_train, validation_data=(x_val, y_val),
-          nb_epoch=10, batch_size=50)
+          epochs=10, batch_size=50)
